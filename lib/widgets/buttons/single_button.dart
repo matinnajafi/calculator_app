@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_calculator_app/constants/constants.dart';
 
-class CalculatorButton extends StatelessWidget {
+// Calculator Button Widget
+class SingleButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
   final Color color;
   final double fontSize;
 
-  CalculatorButton({
+  SingleButton({
     required this.label,
     required this.onTap,
-    this.color = const Color(0xff171719),
+    this.color = greyColor,
     this.fontSize = 36,
   });
 
@@ -50,12 +52,12 @@ class CalculatorButton extends StatelessWidget {
 
   // A helper method to determine the text color
   Color _getTextColor(String text) {
-    return isOperator(text) ? Colors.orange : Colors.white;
+    return isOperator(text) ? orangeColor : Colors.white;
   }
 
   // A helper method to check if the text is an operator
   bool isOperator(String text) {
-    var list = ['ac', 'del', '÷', '-', '+', '%', '×', '='];
-    return list.contains(text);
+    var operatorList = ['ac', '÷', '×', '–', '+', '%'];
+    return operatorList.contains(text);
   }
 }

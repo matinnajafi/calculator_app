@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_calculator_app/widgets/calculate_button.dart';
+import 'package:flutter_calculator_app/widgets/buttons/backspace_button.dart';
+import 'package:flutter_calculator_app/widgets/buttons/equal_button.dart';
+import 'package:flutter_calculator_app/widgets/buttons/single_button.dart';
 
+// Column Buttons Widget
 Widget getColumnButtons(
   String text1,
   String text2,
@@ -11,11 +14,26 @@ Widget getColumnButtons(
   return Column(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
-      CalculatorButton(label: text1, onTap: () {}),
-      CalculatorButton(label: text2, onTap: () {}),
-      CalculatorButton(label: text3, onTap: () {}),
-      CalculatorButton(label: text4, onTap: () {}),
-      CalculatorButton(label: text5, onTap: () {}),
+      SingleButton(label: text1, onTap: () {}),
+      SingleButton(label: text2, onTap: () {}),
+      SingleButton(label: text3, onTap: () {}),
+      SingleButton(label: text4, onTap: () {}),
+      SingleButton(label: text5, onTap: () {}),
+    ],
+  );
+}
+
+// Operators Column Widget
+Widget getOperatorsColumn() {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    mainAxisSize: MainAxisSize.max,
+    children: [
+      getBackSpaceButton(),
+      SingleButton(label: '–', onTap: () {}),
+      SingleButton(label: '+', onTap: () {}),
+      getEqualButton(),
     ],
   );
 }
