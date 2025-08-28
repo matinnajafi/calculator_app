@@ -26,4 +26,12 @@ class CalculatorProvider with ChangeNotifier {
     }
     notifyListeners();
   }
+
+  // this method deletes the last character from the input string (for backspace button)
+  void deleteLastCharacter() {
+    if (_inputUser.isNotEmpty) {
+      _inputUser = _inputUser.substring(0, _inputUser.length - 1);
+      notifyListeners();
+    }
+  }
 }
