@@ -21,7 +21,19 @@ Widget getColumnButtons(
       SingleButton(
         label: text1,
         onTap: () {
-          calculator.buttonPressed(text1);
+          switch (text1) {
+            case 'ac':
+              calculator.clearInput();
+              break;
+            case '÷':
+              calculator.buttonPressed('/');
+              break;
+            case '×':
+              calculator.buttonPressed('*');
+              break;
+            default:
+              calculator.buttonPressed(text1);
+          }
         },
       ),
       SingleButton(

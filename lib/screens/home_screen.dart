@@ -92,6 +92,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                             ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                              ),
+                              child: Text(
+                                maxLines: 2,
+                                textAlign: TextAlign.end,
+                                calculator.result,
+                                style: TextStyle(
+                                  color: orangeColor,
+                                  fontSize:
+                                      calculator.result.length > 10 ? 38 : 52,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 2),
                           ],
                         ),
                       ),
