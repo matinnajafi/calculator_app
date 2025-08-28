@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calculator_app/constants/constants.dart';
+import 'package:flutter_calculator_app/providers/calculator_provider.dart';
 import 'package:flutter_calculator_app/widgets/column_buttons.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,29 +14,26 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final calculator = Provider.of<CalculatorProvider>(context);
     return Scaffold(
       backgroundColor: blackColor,
       body: SafeArea(
         child: Column(
           children: [
-            getResultContainer(),
+            getResultContainer(calculator),
             const Divider(thickness: 0.7, color: greyColor),
-            getButtonsContainer(),
+            getButtonsContainer(context),
           ],
         ),
       ),
     );
   }
-}
 
-class getResultContainer extends StatelessWidget {
-  const getResultContainer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
+  Widget getResultContainer(CalculatorProvider calculator) {
     return Expanded(
       flex: 5,
-      child: SizedBox(
+      child: Container(
+        color: blackColor,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32),
           child: Column(
@@ -69,6 +68,34 @@ class getResultContainer extends StatelessWidget {
                       color: blackColor,
                       borderRadius: BorderRadius.circular(24),
                     ),
+                    child: SingleChildScrollView(
+                      child: SizedBox(
+                        height: 200,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            const Spacer(),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 2,
+                              ),
+                              child: Text(
+                                calculator.input,
+                                maxLines: 2,
+                                textAlign: TextAlign.end,
+                                style: const TextStyle(
+                                  color: whiteColor,
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -79,13 +106,8 @@ class getResultContainer extends StatelessWidget {
       ),
     );
   }
-}
 
-class getButtonsContainer extends StatelessWidget {
-  const getButtonsContainer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
+  Widget getButtonsContainer(context) {
     return Expanded(
       flex: 8,
       child: SizedBox(
@@ -93,10 +115,10 @@ class getButtonsContainer extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            getColumnButtons('ac', '7', '4', '1', '%'),
-            getColumnButtons('÷', '8', '5', '2', '0'),
-            getColumnButtons('×', '9', '6', '3', '.'),
-            getOperatorsColumn(),
+            getColumnButtons('ac', '7', '4', '1', '%', context),
+            getColumnButtons('÷', '8', '5', '2', '0', context),
+            getColumnButtons('×', '9', '6', '3', '.', context),
+            getOperatorsColumn(context),
           ],
         ),
       ),

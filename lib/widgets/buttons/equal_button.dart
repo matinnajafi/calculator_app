@@ -1,10 +1,15 @@
 // Equal Button
 import 'package:flutter/material.dart';
 import 'package:flutter_calculator_app/constants/constants.dart';
+import 'package:flutter_calculator_app/providers/calculator_provider.dart';
+import 'package:provider/provider.dart';
 
-Widget getEqualButton() {
+Widget getEqualButton(context) {
+  final calculator = Provider.of<CalculatorProvider>(context);
   return GestureDetector(
-    onTap: () {},
+    onTap: () {
+      calculator.buttonPressed('=');
+    },
     child: Container(
       width: 72,
       height: 168,
