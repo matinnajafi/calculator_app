@@ -1,16 +1,5 @@
 # flutter_calculator_app
 
-A new Flutter project.
+This is a simple and elegant calculator app built with Flutter. It supports basic arithmetic operations and is designed with a clean, responsive UI for smooth user experience across devices.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![image alt](https://github.com/matinnajafi/calculator_app/blob/39cc230b251f0f391c8584d044ce2b56c5a52202/calculator_banner.png)
